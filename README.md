@@ -1,5 +1,6 @@
 # Examen Tecnico
- App para Examen Tecnico
+App para Examen Tecnico
 
-Back-End => Spring Boot + Lombok\n
+Back-End => Spring Boot + Lombok
+
 Front-End => Angular + MaterialAngular
