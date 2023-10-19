@@ -1,0 +1,13 @@
+<div >
+    <div class="alert alert-danger" style="font-style: italic; font-size: smaller;margin:0;" >
+        <h2 class="text-center">{{Head}}</h2>   
+        <div class="form-group">
+            <label class="">{{Message}}</label>
+        </div> 
+        <div class="col-*-*" style="text-align: right;">
+            <label *ngIf="success" style="padding-right: 10px;">{{errorHttp}}</label>
+            <button class="btn btn-dark mr-2" (click)="cancelButton()">Cancelar</button>
+            <button class="btn btn-danger" (click)="eliminar()">Eliminar</button>
+        </div>
+    </div>
+</div>

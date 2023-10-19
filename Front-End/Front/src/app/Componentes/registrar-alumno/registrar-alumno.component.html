@@ -1,0 +1,106 @@
+<div mat-dialog-content>
+    <form class="form-group" style="font-style: italic; font-size: smaller;" >
+        <h2 class="text-center">{{titleHead}}</h2>   
+        <div class="form-group">
+            <label class="">Nombre: </label>
+            <input type="text"
+            class="form-control"
+            id = "name"
+            [(ngModel)]="usuario.name"
+            name = "name"
+            required
+            minlength="3"
+            maxlength="50"
+            placeholder="Digite su nombre:"
+            #name = "ngModel">    
+            <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)" style="padding-bottom: 0px; padding-top: 0px;">
+                <div *ngIf="name.errors?.['required']">
+                    ¡Digite su nombre por favor!
+                </div>
+                <div *ngIf="name.errors?.['minlength']">
+                    El nombre debe tener minimo 3 caracteres.
+                </div>
+                <div *ngIf="name.errors?.['maxlength']">
+                    El nombre no debe exceder los 50 caracteres.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Apellido: </label>
+            <input type="text"
+            class="form-control"
+            id = "lastName"
+            [(ngModel)]="usuario.lastName"
+            name = "lastName"
+            required
+            minlength="3"
+            maxlength="50"
+            placeholder="Digite su Apellido:"
+            #lastName = "ngModel">   
+            <div class="alert alert-danger" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" style="padding-bottom: 0px; padding-top: 0px;">
+                <div *ngIf="lastName.errors?.['required']">
+                    ¡Digite su apellido por favor!
+                </div>
+                <div *ngIf="lastName.errors?.['minlength']">
+                    El apellido debe tener minimo 3 caracteres.
+                </div>
+                <div *ngIf="lastName.errors?.['maxlength']">
+                    El apellido no debe exceder los 50 caracteres.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Correo Electrónico: </label>
+            <input type="email"
+            class="form-control"
+            id = "email"
+            pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+            [(ngModel)]="usuario.email"
+            name = "email"
+            required
+            minlength="6"
+            maxlength="50"
+            placeholder="Digite su correo electrónico:"
+            #email = "ngModel">  
+            <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)" style="padding-bottom: 0px; padding-top: 0px;">
+                <div *ngIf="email.errors?.['required']">
+                    ¡Digite su correo electronico por favor!
+                </div>
+                <div *ngIf="email.errors?.['pattern']">
+                    Digita el patron de correo correctamente (Ej: test@gmail.com).
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Número Telefoníco: </label>
+            <input type="text"
+            class="form-control"
+            pattern="[0-9_]{10}"
+            id = "number"
+            [(ngModel)]="usuario.number"
+            name = "number"
+            required
+            minlength="10"
+            maxlength="10"
+            placeholder="Digite su numero telefónico:"
+            #number = "ngModel"> 
+            <div class="alert alert-danger" *ngIf="number.invalid && (number.dirty || number.touched)" style="padding-bottom: 0px; padding-top: 0px;">
+                <div *ngIf="number.errors?.['required']">
+                    ¡Digite su numero telefónico por favor!
+                </div>
+                <div *ngIf="number.errors?.['pattern']">
+                    El numero telefónico debe tener un patron de 10 digitos (Ej: 6671829356).
+                </div>
+            </div>
+        </div>
+        <div class="row float-right" style="margin: auto;"> 
+            <div *ngIf="errorAPI" class="alert alert-danger col float-left" style="display: block;width: 100%;padding-bottom: 6px;padding-top: 6px; margin-right: 10px;">
+                {{textError}}
+            </div>    
+            <div class="col-*-*">
+                <button class="btn btn-danger mr-2" (click)="cancelButton()">Cancelar</button>
+                <button class="btn btn-success" (click)="guardarAlumno()">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>

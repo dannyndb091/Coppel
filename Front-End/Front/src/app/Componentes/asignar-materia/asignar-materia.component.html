@@ -1,0 +1,30 @@
+<div mat-dialog-content>
+    <form class="form-group" style="font-style: italic; font-size: smaller;" >
+        <h2 class="text-center">{{head1}}</h2>   
+        <div *ngIf="type == 1" class="form-group">
+            <select (change)="onSelect($event)" class="form-control" name="select">
+                <option>--Seleccione--</option>
+                <option [value]="materia.idCourse" *ngFor="let materia of materias">
+                    {{materia.courseName}}
+                </option>
+            </select>            
+        </div>
+        <div *ngIf="type == 2" class="form-group">
+            <select (change)="onSelect($event)" class="form-control" name="select">
+                <option>--Seleccione--</option>
+                <option [value]="usuario.idUser" *ngFor="let usuario of usuarios">
+                    {{usuario.name}} {{usuario.lastName}}
+                </option>
+            </select>            
+        </div>
+        <div class="row float-right" style="margin: auto;"> 
+            <div *ngIf="errorAPI" class="alert alert-danger col float-left" style="display: block;width: 100%;padding-bottom: 6px;padding-top: 6px; margin-right: 10px;">
+                {{textError}}
+            </div> 
+            <div class="col-*-*">
+                <button class="btn btn-danger mr-2" (click)="cancelar()">Cancelar</button>
+                <button class="btn btn-success" (click)="guardar()">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>

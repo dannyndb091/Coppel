@@ -1,0 +1,52 @@
+<div mat-dialog-content>
+    <div class="row" style="margin: auto;">
+        <div class="col">
+            <h4>{{Encabezado}}</h4>
+        </div>
+        <div style="width: auto;">
+            <button type="button" (click)="asignarNuevo()" class="btn btn-success btn-sm float-right">{{TypeMod}}</button>
+        </div>
+    </div>
+    <div class="table-responsive card ">
+        <table class="table table-striped text-center" >
+            <thead *ngIf="type == 1" class="table-dark">
+                <tr>
+                    <th>{{head1}}</th>
+                    <th>
+                        Opciones
+                    </th>
+                </tr>
+            </thead>
+            <thead *ngIf="type == 2" class="table-dark">
+                <tr>
+                    <th >{{head1}}</th>
+                    <th>{{head2}}</th>
+                    <th>{{head3}}</th>
+                    <th>{{head4}}</th>
+                    <th>
+                        Opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody *ngIf="type == 1">
+                <tr *ngFor="let materia of materias">
+                    <td style="padding: 1px;vertical-align: middle;">{{materia.courseName}}</td>
+                    <td style="padding: 1px;vertical-align: middle;">
+                        <button (click)="eliminarAsignacion(materia.idCourse)" type="button" class="btn btn-danger btn-sm">Dar de Baja</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="type == 2">
+                <tr *ngFor="let usuario of usuarios">
+                    <td style="padding: 1px;vertical-align: middle;">{{usuario.name}}</td>
+                    <td style="padding: 1px;vertical-align: middle;">{{usuario.lastName}}</td>
+                    <td style="padding: 1px;vertical-align: middle;">{{usuario.email}}</td>
+                    <td style="padding: 1px;vertical-align: middle;">{{usuario.number}}</td>
+                    <td style="padding: 1px;vertical-align: middle;">
+                        <button (click)="eliminarAsignacion(usuario.idUser)" type="button" class="btn btn-danger btn-sm">Dar de Baja</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
