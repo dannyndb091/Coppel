@@ -34,6 +34,14 @@ public class UserService {
         return userRepo.findById(idUser);
     }
 
+    public List<Usuario> getUserByNameLikeOrLastNameLike(String name){
+        return userRepo.findByNameLikeOrLastNameLike("%" + name + "%", "%" + name + "%");
+    }
+
+    public List<Usuario> getUserNameLikeAndLastNameLike(String name, String lastName){
+        return userRepo.findByNameLikeAndLastNameLike("%" + name + "%", "%" + lastName + "%");
+    }
+
     public ResponseEntity<String> delUser(Usuario user){
         //Confirmar si existe el Usuario
         Usuario temp = userRepo.findById(user.getIdUser()).orElse(null);

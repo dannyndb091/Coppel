@@ -47,4 +47,24 @@ public class UsuarioController {
     public ResponseEntity<String> delUser(@RequestBody Usuario user){
         return userService.delUser(user);
     }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<Usuario>> getByNameLikeOrLastNameLike(@PathVariable String name){
+        List<Usuario> users = userService.getUserByNameLikeOrLastNameLike(name);
+        if (!users.isEmpty()){
+            return ResponseEntity.ok(users);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/name/{name}/{lastName}")
+    public ResponseEntity<List<Usuario>> getByNameLikeAndLastNameLike(@PathVariable String name,@PathVariable String lastName){
+        List<Usuario> users = userService.getUserNameLikeAndLastNameLike(name,lastName);
+        if (!users.isEmpty()){
+            return ResponseEntity.ok(users);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
