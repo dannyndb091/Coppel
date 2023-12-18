@@ -8,6 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface UsuarioRepo extends JpaRepository<Usuario,Long> {
+    List<Usuario> findByNameLikeOrLastNameLike(String name, String lastName);
+
+    List<Usuario> findByNameLikeAndLastNameLike(String name, String lastName);
+
     List<Usuario> findByNameAndLastName(String name, String lastName);
 
     //Query para Obtener todos los alumnos y la cantidad de Materias Asignadas.
